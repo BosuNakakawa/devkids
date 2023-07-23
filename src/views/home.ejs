@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=;;, initial-scale=1.0">
+    <title>DevKids - นักเขียนโปรแกรมตัวจิ๋ว</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/public/fontawesome/css/all.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/public/css/index.css">
+
+    <script src="/public/js/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <%- include('partials/navbar'); %>
+            <%- include('partials/banner'); %>
+    </header>
+
+    <br>
+
+    <div class="container">
+        <h1 style="background-color: #ff0000; color: #ffffff; padding: 20px;"><i class="far fa-newspaper"></i>
+            บทความล่าสุด</h1>
+        <div class="row">
+            <% if (article !=null) { %>
+                <% article.forEach(function(article, index) { %>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%- article.thumb_url %>" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%- article.title %></h5>
+                                <p class="card-text"><%- article.desc %></p>
+                                <a href="/article/<%- article.id %>" class="btn btn-primary">อ่าน</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            ไม่พบโพสต์ที่จะแสดง
+                            <% } %>
+        </div>
+    </div>
+
+    <br>
+
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+
+    <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
